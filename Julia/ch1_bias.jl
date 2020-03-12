@@ -3,14 +3,15 @@
 
 # (2) ライブラリの読み出し
 ## dplyr的に操作したいのでDataFramesMetaを使う
-using RCall
 using DataFrames
 using DataFramesMeta
 using HypothesisTests
+using RCall
+@rlibrary readr
 
 # (3) データの読み込み
 ## CSV.read()だとネット上のファイルは読み込めないのでRCallを使う。遅い。
-email_data = rcopy(R"read.csv('http://www.minethatdata.com/Kevin_Hillstrom_MineThatData_E-MailAnalytics_DataMiningChallenge_2008.03.20.csv')")
+email_data = rcopy(R"readr::read_csv('http://www.minethatdata.com/Kevin_Hillstrom_MineThatData_E-MailAnalytics_DataMiningChallenge_2008.03.20.csv')")
 
 # (4) データの準備
 ## 女性向けメールが配信されたデータを削除したデータを作成
